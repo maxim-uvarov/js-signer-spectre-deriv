@@ -1,4 +1,4 @@
-# jsmultisig
+# js-signer-spectre-deriv
 
 A test fork of [okp-airgapped-signer](https://github.com/open-knowledge-pack/okp-airgapped-signer), for developing a Spectre identity input mode without touching the published signer.
 
