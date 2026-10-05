@@ -12,6 +12,7 @@ without any professional audit and with no understanding of cryptography.
 Tools can:
 
 - derive a key from a BIP39 mnemonic seed phrase, with optional passphrase
+- (JavaScript only) derive that seed phrase from a Spectre identity, the "Seed words" result of [spectre-web-fork](https://github.com/maxim-uvarov/spectre-web-fork), so the words never pass through the clipboard
 - sign arbitrary text strings
 
 The JavaScript implementation can output QR codes of public keys and signatures.
@@ -27,8 +28,8 @@ The Nushell implementation can check a signature it made against the key it deri
 One self-contained file.
 It runs from `file://` in a desktop browser, and the folder around it is a GitHub Pages site, so it also runs as a Home Screen web app on iPhone, where a local HTML file cannot run its scripts without extra software.
 
-To host it: repository Settings, Pages, source "GitHub Actions", set before the first push to `master`, or that first run fails with "Pages not enabled".
-The workflow in `.github/workflows/pages.yml` publishes `js-okp-signer/` on every push to `master`, and the app then lives at `https://<user>.github.io/<repo>/`.
+To host it: repository Settings, Pages, source "GitHub Actions", set before the first push to `main`, or that first run fails with "Pages not enabled".
+The workflow in `.github/workflows/pages.yml` publishes `js-okp-signer/` on every push to `main`, and the app then lives at `https://<user>.github.io/<repo>/`.
 On iPhone open that URL in Safari, share, "Add to Home Screen".
 The Home Screen app has its own storage, separate from Safari, so launch it once while online: the service worker in `js-okp-signer/sw.js` caches the page on that first launch, and the app works with no network after that.
 The footer shows `offline copy: ready, version ...` when the cache is in place.
@@ -40,7 +41,7 @@ To check that the hosted page is the one in git, without any software on the pho
 Compare with the hash from git on the desktop:
 
 ```
-git show master:js-okp-signer/index.html | sha256sum
+git show main:js-okp-signer/index.html | sha256sum
 ```
 
 The shortcut hashes what the server serves now, not what the phone has cached, so a match proves the server and says nothing about the installed app.

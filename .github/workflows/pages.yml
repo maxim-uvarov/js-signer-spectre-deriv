@@ -5,7 +5,7 @@
 name: pages
 on:
   push:
-    branches: [master]
+    branches: [main]
   # Why: lets a deploy be started from the Actions tab without a commit.
   # Re-running a finished run re-uploads the artifact into the same run,
   # and deploy-pages then refuses to choose between the two copies.
